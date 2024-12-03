@@ -20,7 +20,7 @@ with open("Day2.txt", 'r') as f:
         if(not check_result):
             unsafe.append(line)
     
-    print("Safe:",safe)
+    print("Part One:",safe)
 
     for buffer in unsafe:
         for i in range(len(buffer)):
@@ -32,7 +32,7 @@ with open("Day2.txt", 'r') as f:
                 safe += 1
                 break
     
-    print("Safe:",safe)
+    print("Part Two:",safe)
 
         
 

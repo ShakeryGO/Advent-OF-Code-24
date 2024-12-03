@@ -20,5 +20,5 @@ for l,r in zip(left, right):
     similarity += (right.count(l) * l)
 
 
-print("Sum:", sum)
-print("Similarity:", similarity)
+print("Part One:", sum)
+print("Part Two:", similarity)
