@@ -13,8 +13,11 @@ def exists(array, idx, idy):
     else:
         return False
 
+collisions = 0
 def is_obstructions(array, idx, idy):
+    global collisions
     if(array[idy][idx] == "#"):
+        collisions += 1
         return True
     else:
         return False
@@ -50,9 +53,10 @@ def next_step(array, x, y, reset=False):
 ## Solutions
 first_run = True
 first_positions = []
+first_collisions = 0
 
 def Part_One(array, start):
-    global first_run, first_positions
+    global first_run, first_positions, collisions, first_collisions
 
     positions = []
     map = [[char for char in line] for line in array]
@@ -62,13 +66,17 @@ def Part_One(array, start):
     next = next_step(array, 0,0, reset=True)
     x = start[0]
     y = start[1]
+    collisions = 0
 
-    size = len(array) * len(array[0])
+    #size = len(array) * len(array[0])
 
-    i = 0
+    #i = 0
     while(True):
-        if (i>size):
-            return -1   # Loop
+        #if (i>size):
+        #    return -1   # Loop
+
+        if ((collisions > first_collisions * 2) and not first_run):
+            return -1
 
         next = next_step(array, x,y)
         map[y][x] = "X" # DEBUG
@@ -81,13 +89,17 @@ def Part_One(array, start):
         
         x = next[0]
         y = next[1]
-        i += 1
+        #i += 1
 
     #print()
     #print(np.array(map)) #DEBUG
     if first_run:
+        first_collisions = collisions
         first_positions = positions.copy()
         first_run = False
+
+    #print("collisions",collisions)
+    #print("first_collisions",first_collisions)
 
     return sum((''.join(line)).count('X') for line in map)
     
@@ -95,7 +107,7 @@ def Part_One(array, start):
 
 def Part_Two(array,start):
     loop = 0
-    for posid in range(len(first_positions)-1, 5, -1):
+    for posid in range(len(first_positions)-1, 1, -1):
         print(len(first_positions)-1, posid)
         y = first_positions[posid][1]
         x = first_positions[posid][0]
@@ -108,7 +120,6 @@ def Part_Two(array,start):
         
         if (Part_One(new_map, start) == -1):
             loop += 1
-
         
     return loop
 
