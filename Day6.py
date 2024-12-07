@@ -75,7 +75,7 @@ def Part_One(array, start):
         #if (i>size):
         #    return -1   # Loop
 
-        if ((collisions > first_collisions * 2) and not first_run):
+        if ((collisions > first_collisions + 2) and not first_run):
             return -1
 
         next = next_step(array, x,y)
@@ -128,4 +128,5 @@ start = find_start(raw)
 
 print("Part One:", Part_One(raw, start))
 
+## Piece of shit
 print("Part Two:", Part_Two(raw, start))
