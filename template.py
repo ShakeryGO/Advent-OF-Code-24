@@ -1,8 +1,9 @@
 import math
 import numpy as np
+import re
 
 ## Fetch data
-def Create_Data(day, test=False):
+def Create_Data(day = 0, test = False):
     if test:
         file = f"Day{day}_test.txt"
     else:
@@ -16,15 +17,15 @@ def Create_Data(day, test=False):
 ## Solutions
 
 # == Part One
-def Part_One():
+def Part_One(data):
     pass
 
 # == Part Two
-def Part_Two():
+def Part_Two(data):
     pass
 
 
-data = Create_Data("",test=False)
+data = Create_Data(day = 0, test = False)
 
 print("Part One:", Part_One(data))
 
