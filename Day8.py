@@ -118,8 +118,8 @@ def Part_Two(frequencies, all_antennas):
                     last_x = antinodex
                     last_y = antinodey
                     while(True):
-                        new_x = last_x + vector["x"]
-                        new_y = last_y + vector["y"]
+                        new_x = last_x - vector["x"]
+                        new_y = last_y - vector["y"]
 
                         if(Point_Exists(new_x, new_y)):
                             antinodes.append([new_x, new_y])
